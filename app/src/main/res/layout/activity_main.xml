@@ -7,17 +7,33 @@
     android:layout_height="match_parent">
 
     <!-- Header/Title Bar -->
-    <TextView
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/messengerlogo"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="0dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center_horizontal"
+            android:src="@drawable/messengerlogo" />
+
+        <TextView
         android:id="@+id/chatHeaderTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="Chat Messenger"
+        android:layout_marginTop="30dp"
+        android:padding="5dp"
+        android:text="Messenger"
         android:textSize="22sp"
         android:textStyle="bold"
         android:gravity="center_horizontal"
-        android:background="#EFEFEF"
         android:textColor="#333333"/>
+    </LinearLayout>
 
     <!-- Message Display Area
          - layout_height="0dp" and layout_weight="1" ensures this area fills all remaining vertical space.
@@ -32,8 +48,7 @@
         android:dividerHeight="0dp"
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll"
-        android:background="#FFFFFF" />
-
+        android:background="#FFFFFF"/>
 
     <!-- Message Input and Send Button Area (Fixed at the bottom) -->
     <LinearLayout

@@ -9,20 +9,22 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import org.freedu.sharedpreferenceb6.databinding.ActivityMainBinding
-import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    // IMPORTANT: Assuming the generated layout XML is mapped to ActivityMainBinding
     private lateinit var binding: ActivityMainBinding
+
     private val PREFS_NAME = "chat_prefs"
     private val KEY_DRAFT_MESSAGE = "key_draft_message"
     private val KEY_LAST_SENT = "key_last_sent_message"
+    private val KEY_MESSAGE_LIST = "key_message_list"
 
-    // Mock data for the ListView (replace with a real message model in a full app)
     private lateinit var messageAdapter: ArrayAdapter<String>
     private val messageList = ArrayList<String>()
+    private val gson = Gson()
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,47 +33,91 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 1. Setup ListView Adapter
-        // In a real chat app, you'd use a custom Adapter to handle message bubbles, sender, etc.
+        // 1) Load message list (history) from prefs into messageList
+        messageList.clear()
+        messageList.addAll(loadMessageList())
+
+        // 2) Setup adapter and attach it to ListView
         messageAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, messageList)
         binding.messageListView.adapter = messageAdapter
 
-        // Load previously saved draft and last sent message
-        loadSavedData()
+        // If we loaded messages, refresh adapter and scroll to bottom
+        messageAdapter.notifyDataSetChanged()
+        if (messageAdapter.count > 0) {
+            binding.messageListView.setSelection(messageAdapter.count - 1)
+        }
 
-        // 2. Draft Saving (Saves input text to SharedPreferences as the user types)
+        // 3) Load draft text and last sent summary
+        val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val savedDraft = prefs.getString(KEY_DRAFT_MESSAGE, "") ?: ""
+        val lastSent = prefs.getString(KEY_LAST_SENT, "N/A") ?: "N/A"
+
+        // Restore draft into EditText before attaching TextWatcher (avoids triggering draft save on programmatic set)
+        binding.messageInputET.setText(savedDraft)
+
+        // Update header (note: binding.messageList is a view in your layout used as header — consider renaming in XML to avoid confusion)
+
+        if (savedDraft.isNotEmpty()) {
+            Toast.makeText(this, "Draft loaded: $savedDraft", Toast.LENGTH_SHORT).show()
+        }
+
+        // 4) Attach TextWatcher to auto-save drafts while the user types
         binding.messageInputET.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                saveDraft(s.toString())
+                saveDraft(s?.toString() ?: "")
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
-        // 3. Send Button Logic (Saves and displays the message, then clears the input field)
+        // 5) Send button: add message to list, save history, clear draft, scroll
         binding.sendBtn.setOnClickListener {
             val message = binding.messageInputET.text.toString().trim()
-
             if (message.isNotEmpty()) {
-                // a. Add message to the mock list (simulating sending)
                 messageList.add("You: $message")
                 messageAdapter.notifyDataSetChanged()
-                binding.messageListView.setSelection(messageAdapter.count - 1) // Scroll to bottom
+                binding.messageListView.setSelection(messageAdapter.count - 1)
 
-                // b. Save the sent message to SharedPreferences (for demonstration)
+                // Save last sent and full message list
                 saveLastSent(message)
+                saveMessageList()
 
-                // c. Clear input field and clear the draft in SharedPreferences
+                // Clear input and draft
                 binding.messageInputET.setText("")
                 saveDraft("")
 
-                Toast.makeText(this, "Message Sent and Saved!", Toast.LENGTH_SHORT).show()
+                // Update header to show last sent
+                binding.chatHeaderTV.text = "Chat Messenger (Last Sent: $message)"
+
+                Toast.makeText(this, "Message Sent & Saved!", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Message cannot be empty.", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
+    // Persist the messageList as JSON in SharedPreferences
+    private fun saveMessageList() {
+        val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val json = gson.toJson(messageList)
+        prefs.edit {
+            putString(KEY_MESSAGE_LIST, json)
+        }
+    }
+
+    // Load the saved message list (returns an empty list if none saved)
+    private fun loadMessageList(): ArrayList<String> {
+        val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val json = prefs.getString(KEY_MESSAGE_LIST, null)
+        return if (!json.isNullOrEmpty()) {
+            val type = object : TypeToken<ArrayList<String>>() {}.type
+            gson.fromJson(json, type)
+        } else {
+            ArrayList()
+        }
+    }
+
+    // Save draft value (current input text)
     private fun saveDraft(value: String) {
         val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         prefs.edit {
@@ -79,6 +125,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Save last sent message (simple helper)
     private fun saveLastSent(value: String) {
         val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         prefs.edit {
@@ -86,20 +133,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadSavedData() {
-        val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val savedDraft = prefs.getString(KEY_DRAFT_MESSAGE, "")
-        val lastSent = prefs.getString(KEY_LAST_SENT, "N/A")
-
-        // Load the draft message into the EditText
-        binding.messageInputET.setText(savedDraft)
-
-        // Update the header to show the last message sent (simulating a useful shared preference load)
-        binding.chatHeaderTV.text = "Chat Messenger (Last Sent: $lastSent)"
-
-        // If a draft exists, tell the user (UX enhancement)
-        if (!savedDraft.isNullOrEmpty()) {
-            Toast.makeText(this, "Draft loaded: $savedDraft", Toast.LENGTH_LONG).show()
-        }
+    // Make sure we persist the message list (and optionally the draft) when the activity is paused
+    override fun onPause() {
+        super.onPause()
+        // Save the latest message list and the current draft so nothing is lost if the app is backgrounded
+        saveMessageList()
+        saveDraft(binding.messageInputET.text.toString())
     }
 }

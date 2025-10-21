@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Load previously saved names & draft
+        // Load previously saved names & draft..
         loadSavedNames()
 
         // Save as draft whenever text changes

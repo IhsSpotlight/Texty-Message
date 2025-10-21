@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/second"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/gradient_2"
+        android:layout_marginTop="25dp">
+
+        <!-- Logo -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/Logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/textylogo"
+            app:shapeAppearanceOverlay="@style/CircleImageStyle"
+            app:strokeColor="#3C4042"
+            app:strokeWidth="5dp" />
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/Createacc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Login to your account"
+            android:textColor="#C1BCD9"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <!-- Username Field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/usernameInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:boxStrokeColor="@color/white"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usernameet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ihshabbir346@gmail.com"
+                android:inputType="textEmailAddress"
+                android:textColor="#ADB2B4"
+                android:padding="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Password Field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:boxStrokeColor="@color/white"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="@color/white"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="password"
+                android:inputType="textPassword"
+                android:textColor="#ADB2B4"
+                android:padding="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Login Button -->
+        <Button
+            android:id="@+id/loginbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:text="Login"
+            android:backgroundTint="#373636"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Create Account Button -->
+        <Button
+            android:id="@+id/haveacctv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#373636"
+            android:paddingStart="15dp"
+            android:text="Don't have an Account?\n   create one"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

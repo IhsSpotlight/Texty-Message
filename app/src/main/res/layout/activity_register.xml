@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_1"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/Logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/textylogo"
+            app:shapeAppearanceOverlay="@style/CircleImageStyle"
+            app:strokeColor="#3C4042"
+            app:strokeWidth="5dp" />
+
+        <TextView
+            android:id="@+id/Createacc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Create an account"
+            android:textColor="@color/white"
+            android:textSize="29.sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/usernametv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingStart="15dp"
+            android:text="Enter Email address"
+            android:textColor="@color/white"
+            android:textSize="15.sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/usernameet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ihshabbir346@gmail.com"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="#51636D"
+            android:textColorHint="#767247"
+            android:textSize="15.sp" />
+
+        <TextView
+            android:id="@+id/passwordtv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingStart="15dp"
+            android:text="Create Password"
+            android:textColor="@color/white"
+            android:textSize="15.sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/passwordet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:textColor="#5A5D5F"
+            android:textColorHint="#767247"
+            android:textSize="15.sp" />
+
+        <TextView
+            android:id="@+id/confirmpasswordtv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingStart="15dp"
+            android:text="Confirm Password"
+            android:textColor="@color/white"
+            android:textSize="15.sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/confirmpasswordet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Re-enter password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:textColor="#727576"
+            android:textColorHint="#767247"
+            android:textSize="15.sp" />
+
+        <Button
+            android:id="@+id/loginbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#373636"
+            android:text="Create"
+            android:textSize="18.sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/haveaccbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#5F4C8D"
+            android:paddingStart="15dp"
+            android:text="Already have an Account?\n   Login"
+            android:textColor="@color/white"
+            android:textSize="15.sp"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/googlelog"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                android:src="@drawable/google"
+                app:shapeAppearanceOverlay="@style/CircleImageStyle"
+                app:strokeColor="#6052A3"
+                app:strokeWidth="5dp" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/facebooklog"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                android:src="@drawable/facebook"
+                app:shapeAppearanceOverlay="@style/CircleImageStyle"
+                app:strokeColor="#6052A3"
+                app:strokeWidth="5dp" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/applelog"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                android:src="@drawable/apple"
+                app:shapeAppearanceOverlay="@style/CircleImageStyle"
+                app:strokeColor="#6052A3"
+                app:strokeWidth="5dp" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="110dp"
+            android:textSize="12.sp"
+            android:text="Design and Developed by \nIMAM HOSSAIN"
+            android:textColor="@color/white"
+            android:textIsSelectable="true"
+            android:textStyle="italic" />
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

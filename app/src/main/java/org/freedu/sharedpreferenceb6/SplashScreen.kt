@@ -36,7 +36,7 @@ class SplashActivity : AppCompatActivity() {
         colorAnimator.start()
 
         layout.postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
             finish()
         }, 4000)
     }

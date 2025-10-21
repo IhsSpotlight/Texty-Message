@@ -2,50 +2,75 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="@color/white"
-    android:padding="24dp"
+    android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Header/Title Bar -->
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/chatHeaderTV"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Shared Preference"
-        android:textSize="22.sp"
+        android:padding="16dp"
+        android:text="Chat Messenger"
+        android:textSize="22sp"
         android:textStyle="bold"
-        android:id="@+id/title"/>
+        android:gravity="center_horizontal"
+        android:background="#EFEFEF"
+        android:textColor="#333333"/>
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <EditText
-        android:id="@+id/nameET"
-        android:hint="Enter your first name"
-        android:layout_marginTop="15dp"
+    <!-- Message Display Area
+         - layout_height="0dp" and layout_weight="1" ensures this area fills all remaining vertical space.
+         - ListView is used to efficiently display a list of messages. -->
+    <ListView
+        android:id="@+id/messageListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll"
+        android:background="#FFFFFF" />
 
-    <EditText
-        android:id="@+id/nameETtwo"
-        android:hint="Enter your second name"
-        android:layout_marginTop="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
-    <Button
-        android:id="@+id/saveBtn"
-        android:text="Save"
-        android:backgroundTint="@color/black"
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/savedNameTV"
-        android:text="Saved: (none)"
-        android:layout_marginTop="20dp"
+    <!-- Message Input and Send Button Area (Fixed at the bottom) -->
+    <LinearLayout
+        android:id="@+id/inputArea"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="#F0F0F0"
+        android:gravity="center_vertical"
+        android:elevation="4dp">
+
+        <!-- Input Field (Takes up most of the horizontal space with layout_weight="1") -->
+        <EditText
+            android:id="@+id/messageInputET"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Type your message..."
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLines="4"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:background="#FFFFFF"
+            android:layout_marginEnd="8dp"/>
+
+        <!-- Send Button -->
+        <Button
+            android:id="@+id/sendBtn"
+            android:text="SEND"
+            android:backgroundTint="#1E88E5"
+            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="48dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"/>
+    </LinearLayout>
+
 </LinearLayout>

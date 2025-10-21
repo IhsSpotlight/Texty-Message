@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
                 saveDraft("")
 
                 // Update header to show last sent
-                binding.chatHeaderTV.text = "Chat Messenger (Last Sent: $message)"
+                //binding.chatHeaderTV.text = "Chat Messenger (Last Sent: $message)"
 
                 Toast.makeText(this, "Message Sent & Saved!", Toast.LENGTH_SHORT).show()
             } else {

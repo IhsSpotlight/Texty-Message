@@ -12,8 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SharedPreferenceB6">
         <activity
-            android:name=".SplashScreen"
-            android:exported="true" >
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.SharedPreferenceB6">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

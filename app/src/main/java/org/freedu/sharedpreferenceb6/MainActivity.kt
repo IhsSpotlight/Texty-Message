@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private val KEY_DRAFT_MESSAGE = "key_draft_message"
     private val KEY_LAST_SENT = "key_last_sent_message"
     private val KEY_MESSAGE_LIST = "key_message_list"
-
+    
     private lateinit var messageAdapter: ArrayAdapter<String>
     private val messageList = ArrayList<String>()
     private val gson = Gson()

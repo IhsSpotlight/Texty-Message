@@ -38,7 +38,7 @@
     <!-- Message Display Area
          - layout_height="0dp" and layout_weight="1" ensures this area fills all remaining vertical space.
          - ListView is used to efficiently display a list of messages. -->
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/messageListView"
         android:layout_width="match_parent"
         android:layout_height="0dp"

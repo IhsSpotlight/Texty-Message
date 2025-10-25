@@ -39,9 +39,10 @@ class MainActivity : AppCompatActivity() {
         messageList.addAll(loadMessageList())
 
         // 2) Setup RecyclerView
-        messageAdapter = MessageAdapter(messageList)
-        binding.messageListView.adapter = messageAdapter // Use your RecyclerView's ID
-        binding.messageListView.layoutManager = LinearLayoutManager(this) // Set a LayoutManager
+        messageAdapter = MessageAdapter(messageList)// Change this line:
+        binding.messageListView.adapter = messageAdapter
+        binding.messageListView.layoutManager = LinearLayoutManager(this)
+        binding.messageListView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         // If we loaded messages, refresh adapter and scroll to bottom
         messageAdapter.notifyDataSetChanged()
@@ -53,8 +54,6 @@ class MainActivity : AppCompatActivity() {
         val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val savedDraft = prefs.getString(KEY_DRAFT_MESSAGE, "") ?: ""
         val lastSent = prefs.getString(KEY_LAST_SENT, "N/A") ?: "N/A"
-        binding.chatHeaderTV.text = "Chat Messenger (Last Sent: $lastSent)"
-
         // Restore draft into EditText before attaching TextWatcher
         binding.messageInputET.setText(savedDraft)
 
@@ -90,7 +89,6 @@ class MainActivity : AppCompatActivity() {
                 saveDraft("")
 
                 // Update header to show last sent
-                binding.chatHeaderTV.text = "Chat Messenger (Last Sent: $message)"
 
                 Toast.makeText(this, "Message Sent & Saved!", Toast.LENGTH_SHORT).show()
             } else {

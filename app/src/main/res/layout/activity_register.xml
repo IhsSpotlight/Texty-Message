@@ -11,22 +11,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient_1"
+        android:background="#FFFFFF"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/Logo"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="25dp"
             android:contentDescription="@string/app_name"
             android:scaleType="centerCrop"
             android:src="@drawable/textylogo"
-            app:shapeAppearanceOverlay="@style/CircleImageStyle"
-            app:strokeColor="#3C4042"
-            app:strokeWidth="5dp" />
+            app:shapeAppearanceOverlay="@style/CircleImageStyle" />
 
         <TextView
             android:id="@+id/Createacc"
@@ -35,7 +33,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="Create an account"
-            android:textColor="@color/white"
+            android:textColor="#373636"
             android:textSize="29.sp"
             android:textStyle="bold" />
 
@@ -121,7 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:backgroundTint="#5F4C8D"
+            android:backgroundTint="#373636"
             android:paddingStart="15dp"
             android:text="Already have an Account?\n   Login"
             android:textColor="@color/white"
@@ -177,7 +175,7 @@
             android:layout_marginTop="110dp"
             android:textSize="12.sp"
             android:text="Design and Developed by \nIMAM HOSSAIN"
-            android:textColor="@color/white"
+            android:textColor="#373636"
             android:textIsSelectable="true"
             android:textStyle="italic" />
 

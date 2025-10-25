@@ -14,25 +14,16 @@
         android:layout_gravity="center">
 
         <ImageView
-            android:id="@+id/messengerlogo"
-            android:layout_marginTop="25dp"
+            android:id="@+id/textylogo"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="0dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:gravity="center_horizontal"
-            android:src="@drawable/messengerlogo" />
+            android:src="@drawable/textylogo"
+            />
 
-        <TextView
-        android:id="@+id/chatHeaderTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:padding="5dp"
-        android:text="Messenger"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:gravity="center_horizontal"
-        android:textColor="#333333"/>
+
     </LinearLayout>
 
     <!-- Message Display Area
@@ -44,10 +35,6 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="8dp"
-        android:divider="@null"
-        android:dividerHeight="0dp"
-        android:stackFromBottom="true"
-        android:transcriptMode="alwaysScroll"
         android:background="#FFFFFF"/>
 
     <!-- Message Input and Send Button Area (Fixed at the bottom) -->

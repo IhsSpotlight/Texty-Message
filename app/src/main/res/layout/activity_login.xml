@@ -10,17 +10,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="#FFFFFF"
-        android:layout_marginTop="25dp">
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- Logo -->
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/Logo"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginTop="16dp"
             android:layout_gravity="center"
+            android:layout_marginTop="16dp"
             android:contentDescription="@string/app_name"
             android:scaleType="fitCenter"
             android:src="@drawable/textylogo"
@@ -57,8 +57,8 @@
                 android:layout_height="wrap_content"
                 android:hint="ihshabbir346@gmail.com"
                 android:inputType="textEmailAddress"
-                android:textColor="#ADB2B4"
-                android:padding="12dp" />
+                android:padding="12dp"
+                android:textColor="#ADB2B4" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Password Field -->
@@ -71,8 +71,8 @@
             app:boxStrokeColor="@color/white"
             app:boxStrokeWidth="1dp"
             app:boxStrokeWidthFocused="2dp"
-            app:hintTextColor="@color/white"
-            app:endIconMode="password_toggle">
+            app:endIconMode="password_toggle"
+            app:hintTextColor="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordet"
@@ -80,8 +80,8 @@
                 android:layout_height="wrap_content"
                 android:hint="password"
                 android:inputType="textPassword"
-                android:textColor="#ADB2B4"
-                android:padding="12dp" />
+                android:padding="12dp"
+                android:textColor="#ADB2B4" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Login Button -->
@@ -89,10 +89,10 @@
             android:id="@+id/loginbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_gravity="center"
-            android:text="Login"
+            android:layout_marginTop="20dp"
             android:backgroundTint="#373636"
+            android:text="Login"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -101,8 +101,8 @@
             android:id="@+id/haveacctv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#373636"
             android:paddingStart="15dp"
             android:text="Don't have an Account?\n   create one"
